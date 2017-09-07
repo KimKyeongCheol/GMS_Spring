@@ -1,0 +1,12 @@
+@CHARSET "UTF-8";
+@IMPORT "common.css";
+
+.th5{width: 5%;}
+.th15{width: 15%;}
+.th20{width: 20%;}
+.th30{width: 30%;}
+#board-tab{margin: 0 auto;width: 100%;text-align: center; border: 1px solid #060606;}
+textarea{margin: 0 auto;width: 80%;}
+table tr{height: 25px;color: #060606;border: 1px solid #060606;}
+table th{height: 25px;color: #060606;border: 1px solid #060606;}
+table td{height: 25px;color: #060606;border: 1px solid #060606;}

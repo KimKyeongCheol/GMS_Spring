@@ -1,0 +1,50 @@
+@CHARSET "UTF-8";
+@IMPORT "common.css";
+@IMPORT "board.css";
+
+/* index.html */
+#clock{text-align: right;margin-right: 55px;}
+#index-tab{width: 75%;margin: 0 auto;color:powderblue;border: 0 solid powderblue;}
+.index-ul{width: 200px;margin-top: 10px;}
+.index-ul>li{border: 0 solid powderblue;padding-bottom: 5px;padding-left:4px;list-style-type: none;}
+.index-ul>li>a{text-decoration: none;}
+#index-tab-tr>td{text-align:center;width: 30%; padding-left: 10px;padding-right: 10px;padding-top: 5px;padding-bottom: 5px;}
+#index-tab-tr>th{text-align:center;width: 30%; padding-left: 10px;padding-right: 10px;padding-top: 5px;padding-bottom: 5px;}
+#index-tab>tr{height: 25px;padding-top: 15px;}
+/* login.html*/
+#span-form{width: 50px;display: inline-block;color: #060606;margin-top: 5px;}
+#log-btn{color:#060606;background-color: powderblue;margin: 0 auto}
+#ok-btn{color:#060606;background-color: powderblue;width: 36.5%;margin: 0 auto;}
+#cancle-btn{color:#060606;background-color: powderblue;margin: 0 auto;}
+#container-form{width: 50%;margin: 0 auto;}
+#google{margin: 0 auto;width: 30%;}
+#container-login{width: 60%;margin: 0 auto; height: 550px;margin-top: 30px}
+fieldset {width: 100%;margin: 0 auto;color: #060606;}
+fieldset legend{color: #060606;}
+/*member_add.html*/
+#sub-btn{color:#060606;background-color: powderblue;margin: 0 auto;}
+#reset-btn{color:#060606;background-color: powderblue;margin: 0 auto;}
+#member-tab{width: 100%;margin: 0 auto;color:powderblue;border: 0 solid powderblue;height: 30%;}
+#member-tab>th, td {border-bottom: 0 solid #ddd;}
+#h1{color: #060606;}
+#member_info{width: 80%;margin: 0 auto;height: 20px;}
+
+
+/* member_search */
+#member_search_box{margin: 0 auto;width: 300px;}
+
+/* member_detail */
+#member_detail_tab{margin: 0 auto;width: 100%;text-align: center; border: 1px solid #060606;}
+
+/* member_list */
+#member-list-tab{margin: 0 auto;width: 100%;text-align: center; border: 1px solid #060606;}
+
+
+
+
+.main_ul_stu ul li{padding-left:0;margin-bottom:20px}
+
+ #ti th{background-color: #ff9dce;}
+
+
+
