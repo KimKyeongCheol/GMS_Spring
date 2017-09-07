@@ -5,10 +5,11 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.springframework.stereotype.Component;
 
 import lombok.Getter;
 import lombok.Setter;
-
+@Component
 public class PageProxy extends Proxy{
 	@Setter @Getter protected int 
 	pageSize,blockSize,theNumberOfRow,pageNumber;

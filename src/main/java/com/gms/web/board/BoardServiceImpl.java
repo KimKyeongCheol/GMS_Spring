@@ -2,8 +2,10 @@ package com.gms.web.board;
 
 import java.util.List;
 
+import org.springframework.stereotype.Service;
 
 
+@Service
 public class BoardServiceImpl implements BoardService{
 	//ArticleDao dao=new ArticleDaoImpl();
 	

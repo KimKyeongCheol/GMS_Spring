@@ -8,6 +8,8 @@ import java.util.Map.Entry;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.springframework.stereotype.Component;
+@Component
 public class ParamsIterator {
 
 	public static Map<?, ?> execute(HttpServletRequest request){

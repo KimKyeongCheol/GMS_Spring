@@ -4,8 +4,10 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
-import com.gms.web.constant.Database;
+import org.springframework.stereotype.Component;
 
+import com.gms.web.constant.Database;
+@Component
 public class updateBirth {
    public static void main(String[] args) {
       

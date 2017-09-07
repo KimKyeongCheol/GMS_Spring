@@ -1,5 +1,8 @@
 package com.gms.web.constant;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class Database {
 	public static final String ORACLE_DRIVER="oracle.jdbc.driver.OracleDriver";
 	public static final String ORACLE_URL="jdbc:oracle:thin:@localhost:1521:xe";

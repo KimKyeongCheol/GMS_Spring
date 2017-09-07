@@ -1,5 +1,8 @@
 package com.gms.web.constant;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class Action {
 	
 	public static final String MOVE="move";

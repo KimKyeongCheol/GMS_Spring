@@ -2,6 +2,8 @@ package com.gms.web.proxy;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.springframework.stereotype.Component;
+@Component
 public class BlockHandler{
 
 	public static int [] attr(PageProxy pxy){

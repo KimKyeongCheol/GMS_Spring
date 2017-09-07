@@ -1,7 +1,9 @@
 package com.gms.web.constant;
 
-import com.sun.org.glassfish.gmbal.ParameterNames;
+import org.springframework.stereotype.Component;
 
+import com.sun.org.glassfish.gmbal.ParameterNames;
+@Component
 public class SQL {
 	
 	//,Database.MEMBER_ID,Database.MEMBER_NAME,Database.MEMBER_PASSWORD,Database.MEMBER_SSN,Database.ARTICLE_REGDATE

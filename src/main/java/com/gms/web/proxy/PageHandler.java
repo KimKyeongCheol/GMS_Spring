@@ -2,7 +2,10 @@ package com.gms.web.proxy;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.springframework.stereotype.Component;
+
 import com.gms.web.command.CommandDTO;
+@Component
 public class PageHandler{
 
 	public static CommandDTO attr(PageProxy pxy){

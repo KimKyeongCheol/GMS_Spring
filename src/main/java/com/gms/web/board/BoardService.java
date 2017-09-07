@@ -2,9 +2,11 @@ package com.gms.web.board;
 
 import java.util.List;
 
+import org.springframework.stereotype.Component;
 
 
 
+@Component
 public interface BoardService {
 	public String write(ArticleDTO article);
 	public List<ArticleDTO> getArticles();

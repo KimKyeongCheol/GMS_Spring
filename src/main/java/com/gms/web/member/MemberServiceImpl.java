@@ -5,20 +5,22 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.stereotype.Service;
+
 import com.gms.web.command.CommandDTO;
 import com.gms.web.constant.Database;
 import com.gms.web.grade.MajorDTO;
 
 
 
-
+@Service
 public class MemberServiceImpl implements MemberService{
 	
 	public static MemberServiceImpl getInstance() {
 		
 		return new MemberServiceImpl();
 	}
-	MemberDao dao;
+	MemberDAO dao;
 	private MemberServiceImpl() {
 		//dao=new MemberDaoImpl();
 	}

@@ -2,11 +2,13 @@ package com.gms.web.member;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.stereotype.Component;
+
 import com.gms.web.command.CommandDTO;
 
 
 
-
+@Component
 public interface MemberService {
 	public String add(Map<String, Object> map);
 	public List<?> list(CommandDTO cmd);
