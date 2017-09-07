@@ -10,23 +10,23 @@ public class MemberController {
 	@RequestMapping("/list")
 	public String mainList(Model model) {
 		model.addAttribute("list", "list");
-		return "member/member_list";
+		return "auth:member/member_list.tiles";
 	}
 	@RequestMapping("/detail")
 	public String mainDetail(Model mode) {
-		return "member/member_detail";
+		return "auth:member/member_detail.tiles";
 	}
 	@RequestMapping("/update")
 	public String mainUpdate(Model mode) {
-		return "member/member_update";
+		return "auth:member/member_update.tiles";
 	}
 	@RequestMapping("/add")
 	public String mainAdd(Model mode) {
-		return "member/member_add";
+		return "auth:member/member_add.tiles";
 	}
 	@RequestMapping("/delete")
 	public String mainDelete(Model mode) {
-		return "member/member_adelete";
+		return "auth:member/member_delete.tiles";
 	}
 	
 }

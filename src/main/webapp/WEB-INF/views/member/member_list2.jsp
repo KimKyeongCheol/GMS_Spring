@@ -140,7 +140,6 @@
 <%@page import="java.sql.PreparedStatement"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <link rel="stylesheet" href="/WEB-INF/resources/css/member.css">
-<jsp:include page="../common/navbar.jsp"/>
 
 	<div class =container>
 <!-- 	<div class="jumbotron text-center">

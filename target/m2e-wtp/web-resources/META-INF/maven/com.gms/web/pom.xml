@@ -8,6 +8,7 @@
 	<packaging>war</packaging>
 	<version>1.0.0-BUILD-SNAPSHOT</version>
 	<properties>
+	<!-- 프론트 -->
 		<java-version>1.8</java-version>
 		<spring-version>4.3.0.RELEASE</spring-version>
 		<aspectj-version>1.8.10</aspectj-version>
@@ -18,6 +19,11 @@
 		<tiles-version>3.0.7</tiles-version>
 		<lombok-version>1.16.8</lombok-version>
 		<el-version>1.0</el-version>
+		<!-- 백단 -->
+		<mybatis-version>3.4.1</mybatis-version>
+		<mybatis-spring-version>1.3.0</mybatis-spring-version>
+		
+		
 	</properties>
 	<dependencies>
 		<!-- Spring -->
@@ -99,6 +105,9 @@
 		    <artifactId>commons-el</artifactId>
 		    <version>1.0</version>
 		</dependency>
+		<!--  -->
+		
+		
 						
 						
 		<!-- AspectJ -->
@@ -205,8 +214,19 @@
 		    <artifactId>tiles-el</artifactId>
 		    <version>${tiles-version}</version>
 		</dependency>
-								
-				
+		<!-- mybatis -->			
+			<dependency>
+			<groupId>org.mybatis</groupId>
+			<artifactId>mybatis</artifactId>
+			<version>${mybatis-version}</version>
+		</dependency>	
+		<!-- mybatis-Spring -->			
+			<dependency>
+			<groupId>org.mybatis</groupId>
+			<artifactId>mybatis-spring</artifactId>
+			<version>${mybatis-spring-version}</version>
+		</dependency>	
+		
 		<!-- Test -->
 		<dependency>
 			<groupId>junit</groupId>

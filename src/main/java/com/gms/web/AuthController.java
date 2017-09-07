@@ -19,12 +19,12 @@ public class AuthController {//AuthController에게 자격(권한)을 부여
 	@RequestMapping("/login")
 	public String Login(Model model) {
 		logger.info("Login : {} ");
-		return "common/main";
+		return "auth:common/main.tiles";
 	}
 	@RequestMapping("/main")//세퍼레이터
 	public String mainpage(Model model) {
 		
 		//프록시
-		return "common/main";//커멘드
+		return "auth:common/main.tiles";//커멘드
 	}
 }

@@ -10,18 +10,18 @@ public class GradeController {
 
 	@RequestMapping("/list")
 	public String gradeList(Model model) {
-		return "grade/grade_list";
+		return "auth:grade/grade_list.tiles";
 	}
 	@RequestMapping("/add")
 	public String gradeAdd(Model model) {
-		return "grade/grade_add";
+		return "auth:grade/grade_add.tiles";
 	}
 	@RequestMapping("/detail")
 	public String gradeDetail(Model model) {
-		return "grade/grade_detail";
+		return "auth:grade/grade_detail.tiles";
 	}
 	@RequestMapping("/delete")
 	public String gradeDelete(Model model) {
-		return "grade/grade_delete";
+		return "auth:grade/grade_delete.tiles";
 	}
 }
