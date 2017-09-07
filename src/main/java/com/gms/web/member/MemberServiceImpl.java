@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import com.gms.web.command.CommandDTO;
 import com.gms.web.constant.Database;
 import com.gms.web.grade.MajorDTO;
+import com.gms.web.mapper.MemberMapper;
 
 
 
@@ -20,7 +21,7 @@ public class MemberServiceImpl implements MemberService{
 		
 		return new MemberServiceImpl();
 	}
-	MemberDAO dao;
+	MemberMapper dao;
 	private MemberServiceImpl() {
 		//dao=new MemberDaoImpl();
 	}
