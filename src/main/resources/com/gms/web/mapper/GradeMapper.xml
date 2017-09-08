@@ -4,7 +4,7 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   <mapper namespace="com.gms.web.mapper.GradeMapper">
   	<select id="selectById" resultType="com.gms.web.grade.GradeDTO">
-  	select * from member where id=#{id}
+  	select * from grade where grade_seq=#{grade_seq}
   	</select>
 
   </mapper>

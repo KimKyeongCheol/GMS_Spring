@@ -14,27 +14,27 @@ public class BoardServiceImpl implements BoardService{
 	}
 
 	@Override
-	public String write(ArticleDTO article) {
+	public String write(BoardDTO article) {
 		return null;//(ArticleDaoImpl.getInstance().insert(article).equals("0"))?"등록실패":"등록성공";
 	}
 
 	@Override
-	public List<ArticleDTO> getArticles() {
+	public List<BoardDTO> getArticles() {
 		return null;//ArticleDaoImpl.getInstance().selectAll();
 	}
 
 	@Override
-	public List<ArticleDTO> findById(String id) {
+	public List<BoardDTO> findById(String id) {
 		return null;//ArticleDaoImpl.getInstance().selectById(id);
 	}
 
 	@Override
-	public ArticleDTO findBySeq(String seq) {
+	public BoardDTO findBySeq(String seq) {
 		return null;//ArticleDaoImpl.getInstance().selectBySeq(seq);
 	}
 
 	@Override
-	public String modify(ArticleDTO article) {
+	public String modify(BoardDTO article) {
 		if(article.getTitle().equals("")){
 			article.setTitle(findBySeq(String.valueOf(article.getArticleSeq())).getTitle());
 		}

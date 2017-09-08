@@ -9,7 +9,7 @@ import lombok.Data;
 
 
 @Lazy @Component @Data
-public class ArticleDTO implements Serializable{
+public class BoardDTO implements Serializable{
 	private static final long serialVersionUID=1L;
 	private int articleSeq,hitcount;
 	private String id,title,content,regdate;
