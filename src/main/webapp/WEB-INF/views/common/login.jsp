@@ -25,12 +25,12 @@
               
        
                   <span id="span-form">ID</span> 
-                  <input type="text" id="login_id" name="login_id" placeholder="ID는 숫자 포함 8자 이내"><br> 
+                  <input type="text" id="login_id" name="id" placeholder="ID는 숫자 포함 8자 이내" value="admin"><div style="color: red;size=200px;margin: 0 auto;">${msg}</div><br> 
                   <span id="span-form">PASSWORD</span>
-                  <input name="login_password" id="login_password"  type="password" placeholder="비밀번호"><br><br>
+                  <input  id="login_password" name="pass" type="password" placeholder="비밀번호" value="1"><br><br>
                   <input type="submit" value="LOGIN" id="login_Btn"/> 
                   <input type="reset" value="CANCEL"/>
-             
+              		<input type="submit" value="회원가입" id="join"/>
                <input type="hidden" name="page" value="main"/> 
                <input type="hidden" name="action" value="login"/> 
                

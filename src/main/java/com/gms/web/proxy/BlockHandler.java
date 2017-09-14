@@ -3,9 +3,9 @@ package com.gms.web.proxy;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Component;
-@Component
+@Component 
 public class BlockHandler{
-
+	
 	public static int [] attr(PageProxy pxy){
 	int[] result = new int [6];
 	int theNumberOfPages=0,startPage=0,endPage=0;

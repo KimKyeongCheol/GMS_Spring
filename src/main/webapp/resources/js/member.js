@@ -23,7 +23,7 @@ app.path=(function(){
      };
      
      var setContentView=function(){
-           alert('aaa');
+         //  alert('aaa');
      };
      var onCreate=function(){
            setContentView();
@@ -63,41 +63,47 @@ app.main=(function(){
      var onCreate=function(){
            setContentView();
            $('.list-group-item a').eq(0).on('click',function(){
-        	   location.href=app.path.ctx()+"/member/add";
+        	   app.controller.moveTo("member","member_add")
             });
             $('.list-group-item a').eq(1).on('click',function(){
-            	 location.href=app.path.ctx()+"/member/list";
+            	 alert('####')
+          	   	app.member.list(1);
             });
             $('.list-group-item a').eq(2).on('click',function(){
-            	 location.href=app.path.ctx()+"/member/detail";
+            	app.controller.moveTo("member","member_detail")
             });
             $('.list-group-item a').eq(3).on('click',function(){
-            	 location.href=app.path.ctx()+"/member/delete";
+            	app.controller.deleteTarget(prompt('삭제할 ID를 입력하세요'),'member','list');
+                
+            	// location.href=app.path.ctx()+"/member/delete";
             });
             $('.list-group-item a').eq(4).on('click',function(){
-           	 	location.href=app.path.ctx()+"/grade/add";
+            	app.controller.moveTo("grade","grade_add")
            });
             $('.list-group-item a').eq(5).on('click',function(){
-           	 	location.href=app.path.ctx()+"/grade/list";
+            	app.controller.moveTo("grade","grade_list")
            });
             $('.list-group-item a').eq(6).on('click',function(){
-           	 	location.href=app.path.ctx()+"/grade/detail";
+            	app.controller.moveTo("grade","grade_detail")
            });
             $('.list-group-item a').eq(7).on('click',function(){
-           	 	location.href=app.path.ctx()+"/grade/delete";
+            	app.controller.deleteTarget(prompt('삭제할 ID를 입력하세요'),'grade','list');
+            	//location.href=app.path.ctx()+"/grade/delete";
            });
 
             $('.list-group-item a').eq(8).on('click',function(){
-           	 	location.href=app.path.ctx()+"/board/write";
+            	app.controller.moveTo("board","board_write")
            });
             $('.list-group-item a').eq(9).on('click',function(){
-           	 	location.href=app.path.ctx()+"/board/list";
+            	app.controller.moveTo("board","board_list")
            });
             $('.list-group-item a').eq(10).on('click',function(){
-           	 	location.href=app.path.ctx()+"/board/detail";
+            	app.controller.moveTo("board","board_detail")
+            	
            });
             $('.list-group-item a').eq(11).on('click',function(){
-           	 	location.href=app.path.ctx()+"/board/delete";
+            	app.controller.deleteTarget(prompt('삭제할 ID를 입력하세요'),'board','list');
+            	//location.href=app.path.ctx()+"/board/delete";
            });
      };
      var setContentView=function(){
@@ -132,13 +138,25 @@ app.auth=(function(){
          }
              $('#login_box').attr('action',app.path.ctx()+"/auth/login");
          $('#login_box').attr('method',"post");
-         return true;
+         
+          return true;
           }); /*function(){} 이 이벤트 핸들러가 된다.*/
+          
     };   
+    var join=function(){
+    	  $('#join').on('click',function(){
+    		  alert('회원가입 버튼 click');
+    		  app.controller.moveTo('common','join')
+    	  });
+    }
 
     return {
-          init : init //생성자는 항상 오픈해야 한다
+          init : init, //생성자는 항상 오픈해야 한다
+          join : join
     };
+    
+    
+    
 })();
 
 //navbar
@@ -150,49 +168,50 @@ app.navbar=(function(){
        setContentView();
        
        $('.dropdown-menu a').eq(0).on('click',function(){
-    	   
-          location.href=app.path.ctx()+"/member/add";
+    	   app.controller.moveTo("member","member_add")
        });
        $('.dropdown-menu a').eq(1).on('click',function(){
-          location.href=app.path.ctx()+"/member/list";
+    	   alert('####')
+    	   app.member.list(1);
        });
        $('.dropdown-menu a').eq(2).on('click',function(){
-          location.href=app.path.ctx()+"/member/detail";
+    	   app.controller.moveTo("member","member_detail")
        });
        $('.dropdown-menu a').eq(3).on('click',function(){
-          location.href=app.path.ctx()+"/member/delete";
+    	   app.controller.moveTo("member","member_delete")
        });
        $('.dropdown-menu a').eq(4).on('click',function(){
-           location.href=app.path.ctx()+"/grade/add";
+    	   app.controller.moveTo("grade","grade_add")
         });
        $('.dropdown-menu a').eq(5).on('click',function(){
-           location.href=app.path.ctx()+"/grade/list";
+    	   app.controller.moveTo("grade","grade_list")
         });
        $('.dropdown-menu a').eq(6).on('click',function(){
-           location.href=app.path.ctx()+"/grade/detail";
+    	   
+    	   app.controller.moveTo("grade","grade_detail")
         });
        $('.dropdown-menu a').eq(7).on('click',function(){
-           location.href=app.path.ctx()+"/grade/delete";
+    	   app.controller.moveTo("grade","grade_delete")
         });
        $('.dropdown-menu a').eq(8).on('click',function(){
-           location.href=app.path.ctx()+"/board/write";
+           app.controller.moveTo("board","board_write")
         });
        $('.dropdown-menu a').eq(9).on('click',function(){
-           location.href=app.path.ctx()+"/board/list";
+           app.controller.moveTo("board","board_list")
         });
        $('.dropdown-menu a').eq(10).on('click',function(){
-           location.href=app.path.ctx()+"/board/detail";
+           app.controller.moveTo("board","board_detail")
         });
        $('.dropdown-menu a').eq(11).on('click',function(){
-           location.href=app.path.ctx()+"/board/delete";
-        });
+           app.controller.moveTo("board","board_delete") 
+       });
        
        $('#home a').on('click',function(){
     	   
            location.href=app.path.ctx()+"/auth/main";
        });
        $('#logout').on('click',function(){
-    	   controller.moveTo('common','home'); 
+    	   app.controller.moveTo('common','home'); 
        });
     };
     var setContentView=function(){
@@ -220,26 +239,37 @@ app.member=(function(){
 	};
 	var onCreate=function(){
 		setContentView();
-		$('#updateBtn').on('click',function(){
-			   sessionStorage.setItem('id',$('#datail_id').text());
-	           sessionStorage.setItem('phone',$('#datail_phone').text());
-	           sessionStorage.setItem('email',$('#datail_email').text());
-	           sessionStorage.setItem('title',$('#datail_title').text());
-	          controller.moveTo('member','member_update');
+		$('#confirmBtn').on('click',function(){
+			alert('정보수정!!');
+			   sessionStorage.setItem('id',$('#id').text());
+	           sessionStorage.setItem('phone',$('#phone').text());
+	           sessionStorage.setItem('email',$('#email').text());
+	           sessionStorage.setItem('pass',$('#pass').text());
+	          //app.controller.moveTo('member','member_update');
+				
+			
+			$('#update_form').attr('action',app.path.ctx()+"/student/update");
+	         $('#update_form').attr('method',"post");
+	           //app.controller.updateStudent();
+		
 		});
 		
 		//기능
 	};
 	var setContentView=function(){
-		alert('memberDatail!!');
+	//alert('memberDatail!!');
 		//화면
 		
 		
 
 	
    };
+   var list=function(pageNumber){
+	 location.href=app.path.ctx()+'/member/list/'+pageNumber;  
+   };
 	return {
 		init : init,
+		list : list
 		
 	};
 })();
@@ -356,39 +386,43 @@ app.home=(function(){
 
 app.controller=(function(){
      var init=function(){
+    	 alert(' common controller ');
            /*moveTo(dir,page);*/
      };
      var moveTo=function(dir,page){
-          location.href=app.path.ctx()+'/'+dir+".do?action=move&page="+page;
+    	 
+    	 location.href=app.path.ctx()+"/common"+"/path"+"/"+dir+"/"+page;
+         // location.href=app.path.ctx()+'/'+dir+".do?action=move&page="+page;
      };
      var logout=function(dir,page){
-           location.href = app.path.ctx()+'/' + dir + ".do?action=logout&page="+page;
+    	 app.controller.moveTo("auth","login_view")
+          // location.href = app.path.ctx()+'/' + dir + ".do?action=logout&page="+page;
      };
      var deleteTarget=function(target){
            prompt(target+'의 ID?');
      };
      var list=function(dir,page,pageNumber){
-         location.href=app.path.ctx()+'/'+dir+".do?action=list&page="+page
-                  +"&pageNumber="+pageNumber;
+         location.href=app.path.ctx()+'/'+dir+".do?action=list&page="+page+"&pageNumber="+pageNumber;
       };
 
-     var updateStudent=function(id,email){
-           alert('수정할 id'+id);
-          location.href=app.path.ctx()+"/member.do?action=update&page=member_update&id="+id+"email="+email;
+     var updateStudent=function(id){
+           alert('상세페이지에서 수정페이지로 이동');
+           
+           
      };
      var deleteStudent=function(id){
-           alert('삭제할 id'+id);
-          location.href=app.path.ctx()+"/member.do?action=delete&page=member_list&id="+id;
+           alert('삭제할 id :'+id);
+          location.href=app.path.ctx()+"/member/member_delete/"+id;
      };
     var detailStudent=function(id){
            alert('조회할 id : '+id);
            location.href=
-        	   app.path.ctx()+"/member.do?action=detail&page=member_detail&id="+id;
+        	   app.path.ctx()+"/member/member_detail/"+id;
      };
      var searchStudent=function(){
-    	 	alert('조회할 id : '+id);
-    	 	 var search=$('#search').value;
-          location.href=app.path.ctx()+"/member.do?action=search&page=member_list&search="+search;
+    	 	alert('조회할 id');
+    	 	 var search=$('#search').val();
+          location.href=app.path.ctx()+"/member/search/"+search;
      };
      
      

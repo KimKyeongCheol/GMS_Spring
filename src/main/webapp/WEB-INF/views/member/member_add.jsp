@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <div id="container">
+	<div style="color: red;size=200px;margin: 0 auto;">${msg}</div>
 	<form id="join_form" onsubmit="memberAdd()">
 		<fieldset>
 		<legend>Join information:</legend>

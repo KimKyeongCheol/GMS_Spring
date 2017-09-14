@@ -1,0 +1,70 @@
+ 1. 동적 SQL을 처리하는 방법
+	
+ 2. OGNL 기반의 표현식
+	•if
+	•choose (when, otherwise)
+	•trim (where, set)
+	•foreach
+	
+ 3. if :동적 SQL 에서 가장 공통적으로 사용되는 것으로 where의 일부로 포함될 수 있다.
+ 	<select id="find" 
+ 	parameterType="com.gms.web.Command"
+ 	resultType="com.gms.web.Domain">
+ 		 SELECT * FROM BLOG 
+ 		 WHERE state = ‘ACTIVE’ 
+ 	 <if test="title != null">
+ 		 AND title like '%${name}%'   
+  	</if>
+	 <if test="author != null and author.name != null">    -> command안에 member객체안에 name을 찾는다.
+   		 AND author_name like #{author.name}
+ 	 </if>
+</select>
+
+ 4.choose
+ <select id="findActiveBlogLike" 
+     resultType="Blog">
+  SELECT * FROM BLOG WHERE state = ‘ACTIVE’
+  <choose>
+    <when test="title != null">
+      AND title like #{title}
+    </when>
+    <when test="author != null and author.name != null">
+      AND author_name like #{author.name}
+    </when>
+    <otherwise>
+      AND featured = 1
+    </otherwise>
+  </choose>
+</select>
+ 
+ 5.trim
+ <select id="findActiveBlogLike" 
+     resultType="Blog">
+  SELECT * FROM BLOG 
+  WHERE 
+  <if test="state != null">
+    state = #{state}
+  </if> 
+  <if test="title != null">
+    AND title like #{title}
+  </if>
+  <if test="author != null and author.name != null">
+    AND author_name like #{author.name}
+  </if>
+</select>
+
+
+	6.foreach
+	<select id="selectPostIn" resultType="domain.blog.Post">
+ 		 SELECT *
+  		 FROM POST P
+  		 WHERE ID in
+  		<foreach item="item" index="index" collection="list"
+     	 	 open="(" separator="," close=")">
+       		 #{item}
+  		</foreach>
+	</select>
+
+
+
+

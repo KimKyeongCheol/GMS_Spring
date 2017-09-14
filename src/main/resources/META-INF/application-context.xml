@@ -18,6 +18,7 @@
 		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.3.xsd">
 	
 	<!-- Root Context: defines shared resources visible to all other web components -->
+	<context:annotation-config/> <!-- autowired, resource 를 사용하기 위해 사용 -->
 	<mvc:annotation-driven />
 	<mvc:resources mapping="/resources/**" location="/resources/" />
 	<bean class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver">
