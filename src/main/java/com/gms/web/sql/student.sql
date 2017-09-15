@@ -13,14 +13,14 @@ from member a
 order by rownum desc;
 
 
-
+drop view student;
 -- -------------------------------------------------------------------------------------------------
 create view 
 	student
 (
 	id,name,ssn,
 	regdate,phone,email,
-	pass,subjects
+	pass,subject
 )
 as
 (SELECT 
@@ -29,7 +29,7 @@ as
   	RPAD(SUBSTRING(a.ssn,1,8),14,'*') Birth,
 	DATE_FORMAT(a.regdate,'%Y-%m-%d') regdate, 
  	a.phone phone,a.email email ,a.password pass,
-	GROUP_CONCAT(s.title,',') major
+	GROUP_CONCAT(m.title) subject
 FROM
 	Member a
 	LEFT JOIN major m 

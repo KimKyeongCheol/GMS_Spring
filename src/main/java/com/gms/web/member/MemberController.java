@@ -1,6 +1,9 @@
 package com.gms.web.member;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -11,13 +14,11 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
-import com.gms.web.HomeController;
 import com.gms.web.command.CommandDTO;
-import com.gms.web.complex.PathFactory;
-import com.gms.web.proxy.BlockHandler;
-import com.gms.web.proxy.PageHandler;
+import com.gms.web.grade.MajorDTO;
 import com.gms.web.proxy.PageProxy;
 
 @Controller
@@ -29,11 +30,75 @@ public class MemberController {
 	@Autowired MemberService service;
 	@Autowired CommandDTO cmd;
 	@Autowired PageProxy pxy;
+	@Autowired MemberDTO member;
+	@Autowired MajorDTO major;
+	@RequestMapping(value="/member_add",method=RequestMethod.POST)
+	   public String insertStudent(@ModelAttribute MemberDTO member,@RequestParam("subject") List<String> list) {
+	      logger.info("memberAdd {}","진입");
+	      logger.info("등록 아이디 : {}",member.getId());
+	      logger.info("등록 이름 : {}",member.getName());
+	      logger.info("등록 패스워드 : {}",member.getPassword());
+	      System.out.println("등록 과목 : {}"+list);
+	      List<MajorDTO> paramList=new ArrayList<>();
+	      Map<String,Object> map=new HashMap<>();
+	      map.put("member", member);
+	      MajorDTO mj=null;
+	      for(String m : list) {
+	      mj=new MajorDTO();
+	      mj.setMajorId(String.valueOf((int)(Math.random()*1000)+1000));
+	      mj.setTitle(m);
+	      mj.setId(member.getId());
+	      mj.setSubjId(m);
+	      paramList.add(mj);
+	      };
+	      map.put("list", paramList);
+	      System.out.println("@@@@ :"+paramList);
+	      service.add(map);
+	      return "redirect:/member/list/1";
+	   }
 	
-	@RequestMapping("/member_add")
-	public String memberAdd(Model mode) {
-		return "auth:member/member_add.tiles";
-	}
+/*@RequestMapping(value="/member_add",method=RequestMethod.POST)
+	public String addStudent(@ModelAttribute MemberDTO member, @RequestParam("subject") List<String> list) {
+		
+		
+		
+		
+		logger.info("[등록 ID] : {}"+member.getId());
+		logger.info("[등록  NAME]: {}"+member.getName());
+		logger.info("[등록 PASSWORD]: {}"+member.getPassword());
+		logger.info("[등록  PHONE ]: {}"+member.getPhone());
+		logger.info("[등록  list ]: {}"+list);
+		
+		
+		
+		major.setMajorId(String.valueOf((int)(Math.random()*10000)+10000));
+		logger.info("[등록  major.setId ]: {}"+major.getMajorId());
+		major.setTitle(member.getName());
+		logger.info("[등록  major.getName ]: {}"+member.getName());
+		String sub="";
+		for(int i=0;i<list.size();i++) {
+			sub+=list.get(i);
+			System.out.println("[과목]"+list.get(i));
+		}
+		member.setSubject(sub);
+		//String random=String.valueOf((int)(Math.random()*10000)+1);
+		Map<String,Object> paramMap=new HashMap<>();
+		paramMap.put("member",member);
+		List<MajorDTO> paramList=new ArrayList<>();
+		MajorDTO mj=null;
+		for(String m : list) {
+			mj=new MajorDTO();
+			mj.setId(member.getId());
+			mj.setMajorId(String.valueOf((int)(Math.random()*10000)+1000));
+			mj.setSubjId(m);
+			mj.setTitle(m);
+			paramList.add(mj);
+		}
+		paramMap.put("list", paramList);
+		
+		service.add(paramMap);
+		return "redirect:/member/list/1";
+	}*/
 	@RequestMapping("/list/{pageNumber}")
 	public String memberList(Model model,@PathVariable int pageNumber) {
 		logger.info("member_list{}","진입");

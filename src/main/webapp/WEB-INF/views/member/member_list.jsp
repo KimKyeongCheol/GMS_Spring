@@ -37,7 +37,7 @@
 			<td>${i.ssn}</td>
 			<td>${i.phone}</td>
 			<td>${i.email}</td>
-			<td>${i.subjects}</td>
+			<td>${i.subject}</td>
 			<td>${i.regdate}</td>
 			<td>
 			<a id="update">수정</a>

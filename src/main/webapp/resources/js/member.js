@@ -235,7 +235,7 @@ app.navbar=(function(){
 app.member=(function(){
 	var init=function(){
 		onCreate();
-		
+		insert();
 	};
 	var onCreate=function(){
 		setContentView();
@@ -254,7 +254,15 @@ app.member=(function(){
 		
 		});
 		
+		
 		//기능
+	};
+	var insert=function(){
+		$('#join_yes_btn').on('click',function(){
+			$('#join_form').attr('action',app.path.ctx()+"/member/member_add");
+	         $('#join_form').attr('method',"post");
+			
+		});
 	};
 	var setContentView=function(){
 	//alert('memberDatail!!');
@@ -269,10 +277,12 @@ app.member=(function(){
    };
 	return {
 		init : init,
-		list : list
+		list : list,
+		insert : insert
 		
 	};
 })();
+
 app.board=(function(){
 	   var init=function(){
 	      onCreate();

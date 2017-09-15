@@ -18,11 +18,11 @@ table
 CREATE TABLE
 	Major
 (
-	major_id VARCHAR(10),
+	major_id int primary key auto_increment,
 	title VARCHAR(10),
 	subj_id VARCHAR(10),
 	member_id VARCHAR(10),
-	PRIMARY KEY(major_id)
+	PRIMARY KEY(major_id) 
 );
 
 alter table major add subj_id varchar(10);

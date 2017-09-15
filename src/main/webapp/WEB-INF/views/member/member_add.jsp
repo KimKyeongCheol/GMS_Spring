@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <div id="container">
 	<div style="color: red;size=200px;margin: 0 auto;">${msg}</div>
-	<form id="join_form" onsubmit="memberAdd()">
+	<form id="join_form" >
 		<fieldset>
 		<legend>Join information:</legend>
 		<span id="join_id">ID: </span>
@@ -18,7 +18,7 @@
 		이메일 <input type="email" name="email" value="leegd@test.com" />
 		<br />
 		전화번호 <input type="text" name="phone" value="010-1234-5678" />
-		<h3>통신사</h3>
+		<h3>전공</h3>
 		<select name="major">
 			<option value="computer" selected>컴퓨터공학</option>
 			<option value="economics">경제학</option>
@@ -42,7 +42,9 @@
 </div>
 
 
-
+<script>
+app.member.init()
+</script>
 
 
 

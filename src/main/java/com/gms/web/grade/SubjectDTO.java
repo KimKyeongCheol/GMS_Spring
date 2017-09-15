@@ -7,7 +7,7 @@ import lombok.Data;
 
 @Lazy @Component @Data
 public class SubjectDTO {
-	private String subj_id,title,major_id;
+	private String subjId,title,majorId;
 	
 	
 	

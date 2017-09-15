@@ -9,20 +9,28 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.gms.web.command.CommandDTO;
 import com.gms.web.constant.Database;
 import com.gms.web.grade.MajorDTO;
+import com.gms.web.grade.SubjectDTO;
+import com.gms.web.mapper.GradeMapper;
 import com.gms.web.mapper.MemberMapper;
 
 
 
 @Service
+// @Transactional 여기에 @Transactional을 적용시키면 전부 트랜잭션이 
+// 적용되므로 성능이 떨어진다. 트랜잭션을 적용할 메서드의 override 옆에 @Transactional를 적용시키는 것이 FM이다.
 public class MemberServiceImpl implements MemberService{
 	private static final Logger logger = LoggerFactory.getLogger(MemberController.class);
 	@Autowired MemberMapper mapper;
 	@Autowired MemberDTO member;
 	@Autowired CommandDTO cmd;
+	@Autowired MajorDTO major;
+	@Autowired GradeMapper gmapper;
+	
 	/*public static MemberServiceImpl getInstance() {
 		
 		return new MemberServiceImpl();
@@ -31,19 +39,35 @@ public class MemberServiceImpl implements MemberService{
 	private MemberServiceImpl() {
 		//dao=new MemberDaoImpl();
 	}*/
-	@Override
-	public int add(Map<String, Object>  map) {//MemberDaoImpl.getInstance() 객체,   equals를 사용할 수 있는 이유는 리턴타입이 string객체로 리턴하였기때문에 사용가능.
+	
+	   @Override @Transactional
+	   public int add(Map<?,?> map) {
+	      System.out.println("member service 진입");
+	      int rs=0;
+	      member=(MemberDTO)map.get("member");
+	      mapper.insert(member);
+	      List<?>list=(List<?>)map.get("list");
+	      gmapper.insertMajor(list);
+	      System.out.println("member : "+member);
+	      System.out.println("list : "+list);
+	      return rs;
+	   };
+	
+	
+	
+	/*@Override @Transactional
+	public int add(Map<?,?> map) {//MemberDaoImpl.getInstance() 객체,   equals를 사용할 수 있는 이유는 리턴타입이 string객체로 리턴하였기때문에 사용가능.
 		System.out.println("member service 진입");
-		MemberDTO m=(MemberDTO) map.get("member");
-		System.out.println("넘어온 회원의 정보 :"+ m);
+		member=(MemberDTO) map.get("member");
+		major=(MajorDTO) map.get("major");
 		@SuppressWarnings("unchecked")
-		List<MajorDTO> list=(List<MajorDTO>)map.get("major");
-		System.out.println("넘어온 수강과목:"+list);
+		List<MajorDTO> list=(List<MajorDTO>) map.get("list");
 		
-		/*MemberDaoImpl.getInstance().insert(map);*/
-		//MemberDaoImpl.getInstance().insert(map)=="0"? "join":"main";
-		return  0;
-	}
+		gmapper.insertMajor(list);
+		
+		int rs=0;
+		return  rs;
+	}*/
 	@Override
 	public List<?> list(CommandDTO cmd) {
 		return mapper.selectAll(cmd);//MemberDaoImpl.getInstance().selectAll(cmd);

@@ -14,12 +14,14 @@
    -->
   <mapper namespace="com.gms.web.mapper.MemberMapper">
   <select id="count" resultType="string">
+  <!--     regdate    -->
   	select count(*) as count from member
   </select>
-  <!-- <insert id="add" parameterType="com.gms.web.member.MemberDTO">
+  <insert id="insert" parameterType="com.gms.web.member.MemberDTO">
+	INSERT INTO member(member_id,name,password,ssn,regdate,phone,email,profile) 
+	VALUES(#{id},#{name},#{password},#{ssn},now(),#{phone},#{email},#{profile})
+  </insert>  
  
-  INSERT INTO %s VALUES(#{member_id},#{password},#{ssn},#{name},now(),#{email},#{major_id},#{phone},#{profile},#{gender},#{addr})
-  </insert> -->
   <!-- #{search} : '' 가 있고 ${}는 ''가 없다. -->
    <select id="login" resultType="com.gms.web.member.MemberDTO" parameterType="com.gms.web.command.CommandDTO">
   	select
