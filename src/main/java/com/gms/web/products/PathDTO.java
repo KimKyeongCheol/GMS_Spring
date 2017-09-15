@@ -7,5 +7,5 @@ import lombok.Data;
 
 @Component @Lazy @Data  //@Lazy:
 public class PathDTO {
-	private String path,img,js,css;
+	private String ctx,img,js,css;
 }

@@ -34,7 +34,7 @@ public class HomeController {
 		logger.info("Welcome home! The client locale is {}.", locale);
 	model.addAttribute("serverTime", new SimpleDateFormat("YYYY년 MM월 dd일").format(new Date()) );//model.addAttribute  //프록시
 		model.addAttribute("path", PathFactory.create());
-	return "public:common/home.tiles";//커멘드
+	return "index";//커멘드
 	}
 
 	

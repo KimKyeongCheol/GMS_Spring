@@ -12,14 +12,14 @@ import com.gms.web.products.PathDTO;
 public class PathFactory {
 	public static PathDTO create() {
 		PathDTO path=new PathDTO();
-		path.setPath(
+		path.setCtx(
 				((ServletRequestAttributes)RequestContextHolder
 						.currentRequestAttributes())
 						.getRequest()
 						.getContextPath());
-		path.setImg(path.getPath()+"/resources/img");
-		path.setCss(path.getPath()+"/resources/css");
-		path.setJs(path.getPath()+"/resources/js");
+		path.setImg(path.getCtx()+"/resources/img");
+		path.setCss(path.getCtx()+"/resources/css");
+		path.setJs(path.getCtx()+"/resources/js");
 		
 		return path;
 	}
