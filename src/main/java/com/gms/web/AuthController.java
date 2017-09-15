@@ -19,7 +19,7 @@ import com.gms.web.member.MemberDTO;
 import com.gms.web.member.MemberService;
 
 @Controller //annotation
-@SessionAttributes("user")
+@SessionAttributes("user") 
 @RequestMapping("/auth")
 public class AuthController {//AuthController에게 자격(권한)을 부여
 	@Autowired MemberService service;
