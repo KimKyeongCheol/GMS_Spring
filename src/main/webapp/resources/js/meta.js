@@ -4,7 +4,7 @@ meta.common=(function(){
 		/* alert('이동 :'+$$());*/
 		onCreate();
 		
-		meta.session.init(ctx);
+		meta.session.init(ctx); 
 		/* alert('이동 :'+$$());
 		 alert('이동 :'+css());
 		 alert('이동 :'+js());
