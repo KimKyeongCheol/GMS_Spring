@@ -1,18 +1,20 @@
 package com.gms.web.mapper;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.stereotype.Repository;
 
-import com.gms.web.board.BoardDTO;
+import com.gms.web.board.Article;
+import com.gms.web.command.Command;
+import com.gms.web.command.RespMap;
 
 
 @Repository
 public interface BoardMapper {
-	public String insert(BoardDTO article);
-	public List<BoardDTO> selectAll();
-	public List<BoardDTO> selectById(String id);
-	public BoardDTO selectBySeq(String seq);
-	public String update(BoardDTO article);
-	public String delete(String seq);
-	public String count();
+	public void insert(Command cmd);
+	public List<Article> selectList(Command cmd);//목록가져오는것
+	public Article selectOne(Command cmd); // 하나만 가져오는 것
+	public RespMap count(Command cmd);
+	public void update(Command cmd);
+	public void delete(Command cmd);
 }

@@ -52,7 +52,7 @@
   
   
   <update id="update" parameterType="com.gms.web.member.MemberDTO">
-  UPDATE member SET email=#{email},phone=#{phone},password=#{password} WHERE member_id=#{id}
+  UPDATE member SET email like #{email},phone like #{phone},password  like #{password} WHERE member_id like #{id}
   </update>
   
   <delete id="delete" parameterType="com.gms.web.command.CommandDTO">

@@ -8,11 +8,9 @@ import org.springframework.stereotype.Component;
 
 @Component
 public interface BoardService {
-	public String write(BoardDTO article);
-	public List<BoardDTO> getArticles();
-	public List<BoardDTO> findById(String id);
-	public BoardDTO findBySeq(String seq);
-	public String modify(BoardDTO article);
-	public String remove(String seq);
-	public String count();
+	public void post(Object o);
+	public List<?> list(Object o);
+	public Object get(Object o);
+	public void put(Object o);
+	public void delete(Object o);
 }

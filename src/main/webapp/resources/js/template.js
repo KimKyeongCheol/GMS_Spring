@@ -96,21 +96,211 @@ var introUI={
 		+'</nav>';
 	}
 };
+//jsObject 객체-> function ,json, dom, string,
 //div : () =>{return $();}, -> dom리턴 		div : () =>{return '';},string리턴
-var compUI={
-	div : (x)=> {return $('<div/>',{id:x});},
-	image : (x,y)=>{return $('<img/>',{id : x,src : y});},
-	input : (x,y)=>{return $('<input/>',{id : x,type : y});},
+var compUI={ // dom으로 만든이유는 이벤트를 사용하기 위해 dom형식을 사용한다.
+	br : ()=> {return $('<br/>');},	
+	div : x=> {return $('<div/>',{id:x});},
 	h1 : x => {return $('<h1/>',{id:x});},
-	span : x=>{return $('<span/>',{id:x});}
+	span : x=>{return $('<span/>',{id:x});},
+	iTxt : x=>{return $('<input/>',{id : x,type : 'text'});},
+	aBtn : x=> {return $('<a/>',{href:'#',role:'button',id:x});},
+	iBtn : x=> {return $('<input/>',{id:x,type:'button'});},
+	image : (x,y)=>{return $('<img/>',{id : x,src : y});},
+	input : x=>{return $('<input/>',{id : x,type : 'text'});},
+	tr :(json)=> {return $('<tr/>',(json))},
+	th : (json) => {return $('<th/>',(json))},
+	table :(json) =>{return $('<table/>',(json))}
 	
 }
 var algoUI={
-	series : ()=>{
+	series : ()=>{ //series: dom
 		return '<div id="content">'
 			+'<h1>시작값부터 끝값까지 등차수열의 합</h1>'
 			+'<span id="start_txt">시작값: &nbsp;&nbsp;</span>'
 			+'<br/><span id="end_txt">끝   값:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><br/>'
 			+'<div id="result"></div>';
 	}	
+};
+var searchUI={
+		
+}
+
+var bbsUI={//bbsUI : json
+	tb1 : () => {
+		var tb1='<h4 id="total">총 게시글 수 : </h4>'
+			+'<div id="board">'
+			+'	<table border="1" style="width:100% ;border-collapse:collapse;margin=0 auto" id="board"> '
+			+' 	<thead><tr style="height:25px;">';
+		var a=[{width:'5%',txt:'NO'},
+			{width:'20%',txt:'제  목'},
+			{width:'35%',txt:'내  용'},
+			{width:'15%',txt:'글쓴이'},
+			{width:'15%',txt:'작성일'},
+			{width:'15%',txt:'조회수'}];
+		$.each(a,(i,j)=>{
+			tb1+='<th style="width:'+j.width+'; test-align:center;">'+j.txt+'</th>'
+		});
+		tb1+='</tr></thead><tbody id="tbody">';
+		tb1+='</tbody></table></div>'
+		return tb1;
+		},
+		button:()=>{
+			return '<button id="writeBtn" onclick="searchStudent()" class="btn btn-default" type="button" style="margin-left: 570px;">글쓰기 </button><br>';
+		},
+		pagination :()=>{
+			return '<nav>'
+			  +'<ul class="pagination">'
+			  +'    <li>'
+			  +'    <a href="#" aria-label="Previous">'
+			  +'       <span aria-hidden="true">&laquo;</span>'
+			  +'      </a>'
+			  +'    </li>'
+			  +'   <li><a href="#">1</a></li>'
+			    +'   <li><a href="#">2</a></li>'
+			    +'   <li><a href="#">3</a></li>'
+			    +'    <li><a href="#">4</a></li>'
+			    +'    <li><a href="#">5</a></li>'
+			    +'   <li>'
+			    +'     <a href="#" aria-label="Next">'
+			    +'       <span aria-hidden="true">&raquo;</span>'
+			    +'     </a>'
+			    +'    </li>'
+			    +'  </ul>'
+			    +'	</nav>';
+
+		},
+		search :()=>{
+			return '<div class="row">'
+			  +'<div class="col-lg-6">'
+			    +'<div class="input-group">'
+			      +'<div class="input-group-btn">'
+			      +' <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Action <span +class="caret"></span></button>'
+			        +'<ul class="dropdown-menu" role="menu">'
+			          +'<li><a href="#">Action</a></li>'
+			          +'<li><a href="#">Another action</a></li>'
+			          +'<li><a href="#">Something else here</a></li>'
+			          +'<li class="divider"></li>'
+			          +'<li><a href="#">Separated link</a></li>'
+			        +'</ul>'
+			      +'</div><!-- /btn-group -->'
+			      +'<input type="text" class="form-control" aria-label="...">'
+			    +'</div><!-- /input-group -->'
+			  +'</div><!-- /.col-lg-6 -->'
+			  +'<span class="input-group-btn">'
+			  +' <button onclick="searchStudent()" class="btn btn-default" type="button">검 색 </button>'
+			  +' </span>'
+			;
+		},
+		detail:()=>{
+			return '<div class="page-header" >'
+			+'<h1 style="display:inline;magin-left:100px;">게시판</h1>'
+			+'<a style="font-size:large;">목록가기</a>'
+			+'</div>'
+			+'<div class="container">'
+			+'<div class="row">'
+			+'<div class="col-md-12">'
+			+'<div class="well well-sm">'
+			+'<form class="form-horizontal" method="post">'
+			+'<fieldset>'
+			+'<legend class="text-center header" id="legend">게시물 쓰기</legend>'
+			+'<div class="formp-group">'
+			+'<span class="col-md-1 col-md-offset-2 text-center">'
+			+'	<i class="fa fa-user bigicon"></i>'
+			+'</span>'
+			+'<div class="col-md-12">'
+			+'	<label>작성자 :</label><label id="lname"></label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'
+			+'	<label>작성일 :</label><label id="regdate"></label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'
+			+'	<label>조회수 :</label><label id="hitcount"></label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'
+			+'	</div>'
+			+'</div>'
+			+'<div class="formp-group">'
+			+'	<span class="col-md-1 col-md-offset-2 text-center">'
+			+'	<i class="fa fa-user bigicon"></i>'
+			+'</span>'
+			+'<div class="col-md-12">'
+			+'<label>제목 :</label>	<input id="fname" name="title" type="text" placeholder="제 목" class="form-control3">'
+			+'	</div>'
+			+'<div class="formp-group">'
+			+'<span class="col-md-1 col-md-offset-2 text-center">'
+			+'<i class="fa fa-user bigicon"></i>'
+			+'</span>'
+			+'<div class="col-md-12">'
+			+'<textarea class="form-control" id="message" name="message" rows="10">'
+			+'</textarea>'
+			+'</div>'
+			+'</div>'
+			+'<div class="formp-group" >'
+			+'<span class="col-md-1 col-md-offset-2 text-center" style="width:50%;">'
+			+'	<button type="submit" style="width:150px" class="btn btn-primary btn-lg" id="confirmBtn">확인</button>'
+			+'<button type="reset" style="width:150px" class="btn btn-primary btn-lg" id="cancelBtn">취소</button>'
+			+'</span>'
+			+'</div>'
+			+'</fieldset>'
+			+'</form>'
+			+'</div>'
+			+'</div>'
+			+'</div>'
+			+'</div>'
+			+'<div class="modal fade alert" id="modal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">'
+			+'<div class="modal-dialog">'
+			+'<div class="modal-content">'
+			+'<div class="modal-header">'
+			+'<button type="button" class="close" date-dismiss=""modal>'
+			+'<span aria-hidden="true">x</span>'
+			+'<span class="sr-only">Close</span></button>'
+			+'<h3 class="modal-title" id="modalLabel">정말 삭제하시겠습니까?</h3>'
+			+'</div>'
+			+'<div class="modal-body">'
+			+'<form>'
+			+'<div class="form-group">'
+			+'<label for="inputPass">Password</label>'
+			+'<input type="password" class="form-control" id="user-email2" placeholder="Enter Password">'
+			+'</div>'
+			+'<button type="submit" style="width:200px;" class="btn btn-primary center-block">확인</button">'
+			+'</form>'
+			+'</div>'
+			+'</div>'
+			+'</div>'
+			+'</div>'
+			;
+
+		}
+		
+		/*return '<header>'
+		+'</header>'
+		+'<div class="jumbotron text-center" id="tb1">'
+		+'	<h1 id="title">게시글목록</h1>'
+		+'</div>' 		
+		+' 	</table>'
+		+'<nav aria-label="Page navigation" style="width:400px;margin: 0 +auto;">'
+		  +'<ul class="pagination">'
+		    +'<li>'
+		    	 +'<a onclick="app.member.list()"> '
+		    +'		<span class="glyphicon glyphicon-step-backward" +aria-hidden="true"></span>'
+		    	+'</a>'
+		    +'</li>'
+		    +'<li>'
+		    +'  <a onclick="app.member.list()" +aria-label="Previous">'
+		        +'<span aria-hidden="true">&laquo;</span>'
+		      +'</a>'
+		    +'</li>'
+		    			+'<li class="active"><a href="#">${i.index}</a></li>'
+		    			+'<li ><a href="#" onclick="list()">'
+		    				+'${i.index}</a></li>'
+		    	+'<li>'
+		    	+'	<a onclick="app.member.list()"  +aria-label="Next">'
+			        	+'<span aria-hidden="true">&raquo;</span>'
+			      	+'</a>'
+			    +'</li>'
+		    	+'<li>	'
+		    		+'<a onclick="app.member.list()" >'
+		+'	<span class="glyphicon glyphicon-step-forward" +aria-hidden="true"></span>'
+		    		+'</a>'
+		    	+'</li>'
+		  +'</ul>'
+		+'</nav>'
+		;*/
+		
+	
 };

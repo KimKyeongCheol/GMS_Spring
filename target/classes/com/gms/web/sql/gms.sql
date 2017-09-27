@@ -8,6 +8,8 @@
 --[6]GRADE_TAB
 --[7]BOARD_TAB
 --****************
+select * from board ;
+	where article_seq like 1;
 select 
 	* 
 from 

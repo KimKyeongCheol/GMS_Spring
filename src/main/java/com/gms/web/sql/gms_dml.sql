@@ -6,7 +6,7 @@
 --  major_id,phone,email,profile)
 --******************
 SELECT * from MEMBER;
-
+SELECT * from board;
 SELECT COUNT(*) AS COUNT FROM MEMBER;
 SELECT * FROM Member WHERE id='dsd';
 INSERT INTO MEMBER(member_id,name,password,ssn,regdate,major_id,phone,email,profile)
